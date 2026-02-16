@@ -14,3 +14,52 @@
 
 <h2>Import</h2>
 <a href="/import?key=F12026admin&season=2025">Import last race 2025</a>
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Admin F1 2026</title>
+</head>
+<body>
+    <h1>Admin – Piloți</h1>
+
+    <h2>Adaugă pilot</h2>
+    <form method="post">
+        Nume pilot:<br>
+        <input type="text" name="name" required><br><br>
+
+        Jucător:<br>
+        <input type="text" name="player" required><br><br>
+
+        An:<br>
+        <select name="year">
+            <option value="2025">2025</option>
+            <option value="2026">2026</option>
+        </select><br><br>
+
+        <button type="submit">Adaugă</button>
+    </form>
+
+    <h2>Lista piloți</h2>
+    <table border="1" cellpadding="5">
+        <tr>
+            <th>ID</th>
+            <th>Pilot</th>
+            <th>Jucător</th>
+            <th>An</th>
+            <th>Șterge</th>
+        </tr>
+
+        {% for p in pilots %}
+        <tr>
+            <td>{{ p.id }}</td>
+            <td>{{ p.name }}</td>
+            <td>{{ p.player }}</td>
+            <td>{{ p.year }}</td>
+            <td>
+                <a href="/delete/{{ p.id }}">Șterge</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>
