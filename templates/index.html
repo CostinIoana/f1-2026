@@ -1,0 +1,22 @@
+<h1>F1 {{current}} Clasament</h1>
+
+<form>
+<select name="season" onchange="this.form.submit()">
+{% for s in seasons %}
+<option value="{{s.year}}" {% if s.year==current %}selected{% endif %}>{{s.year}}</option>
+{% endfor %}
+</select>
+</form>
+
+<table border="1">
+<tr><th>Loc</th><th>Nume</th><th>Puncte</th></tr>
+{% for p in table %}
+<tr>
+<td>{{loop.index}}</td>
+<td>{{p[0]}}</td>
+<td>{{p[1]}}</td>
+</tr>
+{% endfor %}
+</table>
+
+<a href="/export?season={{current}}">Export Excel</a>
